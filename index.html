@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>PT3</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Odd/Even Sum Calculator</h1>
+        <label for="numbers">Enter 25 integers (comma-separated):</label>
+        <input type="text" id="numbers" placeholder="e.g. 1, 2, 3, ...">
+        <button onclick="calculate()">Calculate</button>
+        <div class="result" id="output"></div>
+    </div>
+
+    <script>
+        function calculate() {
+            var input = document.getElementById('numbers').value;
+            var numbers = input.split(',').map(Number);
+            var sum = 0;
+            var output = document.getElementById('output');
+            var result = '';
+
+            for (var i = 0; i < numbers.length; i++) {
+                var number = numbers[i];
+                sum += number;
+                var parity = (number % 2 === 0) ? 'Even' : 'Odd';
+                result += `Number ${number} is ${parity}<br>`;
+            }
+
+            result += `<b>Total Sum:</b> ${sum}`;
+            output.innerHTML = result;
+        }
+    </script>
+</body>
+</html>
